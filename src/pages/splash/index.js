@@ -6,7 +6,7 @@ const SplashScreen =()=>{
     return(
         <View style={style.mainWrapper}>
           <ILLogo/>
-          <Text style={style.fontTitle}>Chat Dokter Niko</Text>
+          <Text style={style.fontTitle}>Chat Dokter</Text>
         </View>
     )
 }

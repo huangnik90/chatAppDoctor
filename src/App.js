@@ -1,10 +1,13 @@
 
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import {SplashScreen,GetStarted} from './pages';
+import Router from './router';
 
 const App= () =>  {
   return (
-    <GetStarted/>
+    <NavigationContainer>
+      <Router></Router>
+    </NavigationContainer>
   );
 };
 
