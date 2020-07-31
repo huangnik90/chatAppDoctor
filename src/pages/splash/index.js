@@ -1,12 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {View,Text, StyleSheet} from 'react-native'
 import { ILLogo } from '../../assets';
 
-const SplashScreen =()=>{
+const SplashScreen =(props)=>{
+  useEffect(()=>{
+    setTimeout(()=>{
+      props.navigation.navigate('GetStarted')
+    },3000)
+  },[props.navigation])
+
     return(
         <View style={style.mainWrapper}>
           <ILLogo/>
-          <Text style={style.fontTitle}>Chat Dokter</Text>
+          <Text style={style.fontTitle}>Kuw Dokter</Text>
         </View>
     )
 }

@@ -1,6 +1,6 @@
 import {createStackNavigator} from '@react-navigation/stack'
 import React from 'react'
-import {SplashScreen, GetStarted} from '../pages';
+import {SplashScreen, GetStarted, Register,Login} from '../pages';
 
 const Stack = createStackNavigator();
 
@@ -14,6 +14,14 @@ const Router = ()=>{
             <Stack.Screen 
             name="GetStarted" 
             component={GetStarted} 
+            options={{headerShown:false}}/>
+            <Stack.Screen 
+            name="Register" 
+            component={Register} 
+            options={{headerShown:false}}/>
+            <Stack.Screen 
+            name="Login" 
+            component={Login} 
             options={{headerShown:false}}/>
         </Stack.Navigator>
     )
