@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import {View,Text, StyleSheet} from 'react-native'
 import { ILLogo } from '../../assets';
+import { colors } from '../../utils';
 
 const SplashScreen =(props)=>{
   useEffect(()=>{
@@ -19,7 +20,7 @@ const SplashScreen =(props)=>{
 
 const style= StyleSheet.create({
   mainWrapper:{
-    backgroundColor:'white',
+    backgroundColor:colors.white,
     flex:1,
     alignItems:'center',
     justifyContent:"center"
