@@ -3,6 +3,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 
 import React from 'react'
 import {SplashScreen, GetStarted, Register,Login, UploadPhoto,Doctor,Hospital,Messages} from '../pages';
+import { BottomNavigator } from '../components/molecules';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator()
@@ -39,9 +40,9 @@ const Router = ()=>{
 
 const MainApp =()=>{
     return(
-        <Tab.Navigator>
+        <Tab.Navigator tabBar={props=><BottomNavigator {...props}/>}>
             <Tab.Screen name="Doctor" component={Doctor}/>
-            <Tab.Screen name="Messasges" component={Messages}/>
+            <Tab.Screen name="Messages" component={Messages}/>
             <Tab.Screen name="Hospital" component={Hospital}/>
         </Tab.Navigator>
     )
