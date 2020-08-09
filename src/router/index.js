@@ -9,7 +9,7 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator()
 const Router = ()=>{
     return(
-        <Stack.Navigator initialRouteName="MainApp">
+        <Stack.Navigator initialRouteName="MainApp" >
             <Stack.Screen 
             name="Splash" 
             component={SplashScreen} 

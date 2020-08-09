@@ -9,7 +9,7 @@ const RatedDoctor =({title,onPress})=>{
             <Image style={styles.avatar} source={DummyDokter3}/>
             <View style={styles.profile}>
                 <Text style={styles.label}>Nama Dokter</Text>
-                <Text style={styles.profession}>Jabatan Dokter</Text>
+                <Text style={styles.profession}>Jabatan</Text>
             </View>
             <View style={styles.rate}>
                 <IconStar/>
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         color:colors.text.primary
     },
     profession:{
-        fontSize:16,
+        fontSize:12,
         fontFamily:fonts.primary.normal,
         color:colors.text.secondary
     }

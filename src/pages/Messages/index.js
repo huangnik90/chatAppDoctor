@@ -1,17 +1,36 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { colors } from '../../utils';
+import { colors, fonts } from '../../utils';
+import { ListDoctor } from '../../components/molecules';
 
 const Messages =()=>{
     return(
      <View style={styles.page}>
-         <Text >Messages</Text>
+       <View style={styles.content}>
+          <Text style={styles.title} >Messages</Text>
+          <ListDoctor/>
+          <ListDoctor/>
+          <ListDoctor/>
+       </View>
+    
+
      </View>
     )
 }
 
 const styles = StyleSheet.create({
-  page:{padding:40,backgroundColor:colors.white,flex:1},
+  page:{
+    backgroundColor:colors.secondary,flex:1
+  },
+  content:{
+    backgroundColor:colors.white,flex:1,
+    borderBottomLeftRadius:20,
+    borderBottomRightRadius:20
+  },
+  title:{
+    fontSize:20,
+    fontFamily:fonts.primary[600],color:colors.text.primary, marginTop:30,marginLeft:16
+  }
 })
 
 export default Messages;
