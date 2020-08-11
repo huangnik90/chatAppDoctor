@@ -1,22 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { colors, fonts } from '../../utils';
 import { ListDoctor } from '../../components/molecules';
+import { DummyDokter2, DummyDokter3, DummyDokter } from '../../assets';
 
 const Messages =()=>{
+  const [doctor] = useState([
+    {
+      id:1,
+      picture:DummyDokter2,
+      name:'Michael Turnic',
+      message:'Saya ingin syalalala..'
+    },  
+    {
+      id:2,
+      picture:DummyDokter3,
+      name:'Shawn Mandes',
+      message:'Saya ingin berkonsutasi pada tanggal 29..'
+    },  
+    {
+      id:3,
+      picture:DummyDokter,
+      name:'Jackson Wang',
+      message:'Saya menyarankan anda untuk..'
+    }
+  ])
     return(
      <View style={styles.page}>
        <View style={styles.content}>
           <Text style={styles.title} >Messages</Text>
-          <ListDoctor/>
-          <ListDoctor/>
-          <ListDoctor/>
+        {
+          doctor.map((val,index)=>{
+          return (
+          <ListDoctor 
+              key={index}
+              picture={val.picture}
+              name={val.name}
+              chat={val.message}
+          />)
+        })
+        }
        </View>
-    
-
      </View>
     )
 }
+
+
 
 const styles = StyleSheet.create({
   page:{

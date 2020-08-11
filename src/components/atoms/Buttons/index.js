@@ -2,8 +2,12 @@ import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, TextInput } from 'react-native'
 import { colors, fonts } from '../../../utils'
 import IconOnly from './IconOnly'
+import ButtonIconSend from './ButtonIconSend'
 
 const Button = (props)=>{
+    if(props.type ==='btn-icon-send'){
+        return <ButtonIconSend disable={props.disable}/>
+    }
     if(props.type==='icon-only'){
         return(
            <IconOnly icon={props.icon} onPress={props.onPress}/>

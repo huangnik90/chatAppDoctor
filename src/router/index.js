@@ -2,7 +2,17 @@ import {createStackNavigator} from '@react-navigation/stack'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 
 import React from 'react'
-import {SplashScreen, GetStarted, Register,Login, UploadPhoto,Doctor,Hospital,Messages} from '../pages';
+import {
+    ChooseDoctor,
+    SplashScreen, 
+    GetStarted, 
+    Register,
+    Login, 
+    UploadPhoto,
+    Doctor,
+    Hospital,
+    Messages, 
+    Chat} from '../pages';
 import { BottomNavigator } from '../components/molecules';
 
 const Stack = createStackNavigator();
@@ -33,6 +43,14 @@ const Router = ()=>{
              <Stack.Screen 
             name="MainApp" 
             component={MainApp} 
+            options={{headerShown:false}}/>
+            <Stack.Screen 
+            name="ChooseDoctor" 
+            component={ChooseDoctor} 
+            options={{headerShown:false}}/>
+            <Stack.Screen 
+            name="Chat" 
+            component={Chat} 
             options={{headerShown:false}}/>
         </Stack.Navigator>
     )

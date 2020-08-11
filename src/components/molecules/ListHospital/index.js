@@ -1,16 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
-import {  Hospital } from '../../../assets';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import { colors, fonts } from '../../../utils';
 
-const ListHospital =()=>{
+const ListHospital =(props)=>{
     return(
      <View style={styles.container}>
-         <Image style={styles.avatar} source={Hospital}/>
+         <Image style={styles.avatar} source={props.picture}/>
             <View>
-                <Text style={styles.title} >Rumah Sakit</Text>
-                <Text style={styles.title} >Nama Rumah Sakit</Text>
-                <Text style={styles.alamat} >Alamat Rumah Sakit</Text>
+                <Text style={styles.title}>{props.type}</Text>
+                <Text style={styles.title}>{props.name}</Text>
+                <Text style={styles.alamat}>{props.address}</Text>
             </View>
      </View>
     )

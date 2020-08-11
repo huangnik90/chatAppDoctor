@@ -8,9 +8,16 @@ import IconMessageActive from './text_active.svg'
 import IconMessageInactive from './text_inactive.svg'
 import IconHospitalActive from './map_active.svg'
 import IconHospitalInactive from './map_inactive.svg'
+import IconBackArrowLight from './BackArrowLight.svg'
+import IconNextArrow from './NextArrow.svg'
+import IconSend from './iconSend.svg'
+import IconSendActive from './iconSendActive.svg'
+
+
 
 export {
-    IconBackArrow,
+    IconBackArrow,IconBackArrowLight,
+    IconNextArrow,
     IconAddPhoto,
     IconCancelPhoto,
     IconDoctorActive,
@@ -18,5 +25,6 @@ export {
     IconHospitalActive,
     IconHospitalInactive,
     IconMessageActive,
-    IconMessageInactive,IconStar
+    IconMessageInactive,IconStar,
+    IconSend,IconSendActive
 } 

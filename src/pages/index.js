@@ -6,6 +6,18 @@ import UploadPhoto from './UploadPhoto'
 import Doctor from './Doctor'
 import Hospital from './Hospital'
 import Messages from './Messages'
+import ChooseDoctor from './ChooseDoctor'
+import Chat from './Chat'
 
 
-export {SplashScreen,GetStarted,Login, Register,UploadPhoto,Doctor,Hospital,Messages};
+export {
+    ChooseDoctor,
+    SplashScreen,
+    GetStarted,
+    Login, 
+    Register,
+    UploadPhoto,
+    Doctor,
+    Hospital,
+    Messages,Chat
+};

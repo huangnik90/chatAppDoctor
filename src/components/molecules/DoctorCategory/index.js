@@ -1,18 +1,18 @@
 import React from 'react'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { DummyIconDokter } from '../../../assets'
 import { colors, fonts } from '../../../utils'
 
 const DoctorCategory =({title,onPress})=>{
     return(
-        <View style={styles.container}>
+        <TouchableOpacity onPress={onPress} style={styles.container}>
             <Image
                 source={DummyIconDokter}
                 style={styles.imageDoctor}
             />
            <Text style={styles.label}>Saya butuh</Text>
            <Text style={styles.category}>dokter umum</Text>
-        </View>
+        </TouchableOpacity>
     )
 }
 

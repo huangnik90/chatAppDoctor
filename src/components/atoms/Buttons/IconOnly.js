@@ -1,6 +1,6 @@
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
-import { IconBackArrow } from '../../../assets'
+import { IconBackArrow, IconBackArrowLight } from '../../../assets'
 
 const IconOnly =({onPress,icon})=>{
     const Icon =()=>{
@@ -8,7 +8,7 @@ const IconOnly =({onPress,icon})=>{
             return <IconBackArrow/>
         }
         if(icon ==='back-light'){
-            return <IconBackArrow/>
+            return <IconBackArrowLight/>
         }
         return <IconBackArrow/>
     }
