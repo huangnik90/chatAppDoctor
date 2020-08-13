@@ -14,14 +14,15 @@ import {
     Messages, 
     Chat,
     UserProfile,
-    EditProfile} from '../pages';
+    EditProfile,
+    DoctorProfile} from '../pages';
 import { BottomNavigator } from '../components/molecules';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator()
 const Router = ()=>{
     return(
-        <Stack.Navigator initialRouteName="MainApp" >
+        <Stack.Navigator initialRouteName="Splash" >
             <Stack.Screen 
             name="Splash" 
             component={SplashScreen} 
@@ -61,6 +62,10 @@ const Router = ()=>{
             <Stack.Screen 
             name="EditProfile" 
             component={EditProfile} 
+            options={{headerShown:false}}/>
+             <Stack.Screen 
+            name="DoctorProfile" 
+            component={DoctorProfile} 
             options={{headerShown:false}}/>
         </Stack.Navigator>
     )

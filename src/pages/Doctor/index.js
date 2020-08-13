@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { DoctorCategory, HomeProfile, NewsItem, RatedDoctor } from '../../components/molecules';
 import { fonts, colors } from '../../utils';
 import { Gap } from '../../components/atoms';
+import { DummyDokter3, DummyDokter } from '../../assets';
 
 const Doctor =({navigation})=>{
     return(
@@ -26,9 +27,19 @@ const Doctor =({navigation})=>{
                   </View>
                   <View style={styles.wrapperSection}>
                     <Text style={styles.sectionLabel} >Top Rated Doctors</Text>
-                    <RatedDoctor/>
-                    <RatedDoctor/>
-                    <RatedDoctor/>
+                    <RatedDoctor 
+                    onPress={()=>navigation.navigate('DoctorProfile')} 
+                    name="Alesca Rachel" 
+                    desc="Psikiatris"
+                    avatar={DummyDokter3}
+                    />
+                       <RatedDoctor 
+                    onPress={()=>navigation.navigate('DoctorProfile')} 
+                    name="Michael" 
+                    desc="Dentist"
+                    avatar={DummyDokter}
+                    />
+                  
                     <Text style={styles.sectionLabel} >Good News</Text>
                   </View>
                   

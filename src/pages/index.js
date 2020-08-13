@@ -10,7 +10,7 @@ import ChooseDoctor from './ChooseDoctor'
 import Chat from './Chat'
 import UserProfile from './UserProfile'
 import EditProfile from './EditProfile'
-
+import DoctorProfile from './DoctorProfile'
 
 export {
     ChooseDoctor,
@@ -22,5 +22,5 @@ export {
     Doctor,
     Hospital,
     Messages,Chat,
-    UserProfile,EditProfile
+    UserProfile,EditProfile,DoctorProfile
 };
