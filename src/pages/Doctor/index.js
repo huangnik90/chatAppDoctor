@@ -9,7 +9,7 @@ const Doctor =({navigation})=>{
      <View style={styles.page}>
        <View style={styles.content}>
             <ScrollView showsVerticalScrollIndicator={false}>
-                <HomeProfile/>
+                <HomeProfile onPress={()=>navigation.navigate('UserProfile')}/>
                 <View style={styles.wrapperSection}>
                    <Text style={styles.welcome}>Mau konsultasi dengan siapa hari ini?</Text>
                 </View>

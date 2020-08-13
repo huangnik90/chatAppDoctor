@@ -4,16 +4,19 @@ import HomeProfile from './HomeProfile'
 import DoctorCategory from './DoctorCategory'
 import RatedDoctor from './RatedDoctor'
 import NewsItem from './NewsItem'
-import ListDoctor from './ListDoctor'
+import List from './List'
 import ListHospital from './ListHospital'
 import ChatItem from './ChatItem'
 import InputChat from './InputChat'
+import Profile from './Profile'
+
 
 export {
     Header,
     BottomNavigator,
     HomeProfile,DoctorCategory,RatedDoctor,NewsItem,
-    ListDoctor,
+    List,
     ListHospital,
-    InputChat,ChatItem
+    InputChat,ChatItem,
+    Profile
 }

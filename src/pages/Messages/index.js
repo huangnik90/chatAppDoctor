@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { colors, fonts } from '../../utils';
-import { ListDoctor } from '../../components/molecules';
+import { List } from '../../components/molecules';
 import { DummyDokter2, DummyDokter3, DummyDokter } from '../../assets';
 
 const Messages =()=>{
@@ -32,7 +32,7 @@ const Messages =()=>{
         {
           doctor.map((val,index)=>{
           return (
-          <ListDoctor 
+          <List 
               key={index}
               picture={val.picture}
               name={val.name}

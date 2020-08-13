@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { DummyDokter2 } from '../../assets';
-import { Header, ListDoctor } from '../../components/molecules';
+import { Header, List } from '../../components/molecules';
 import { colors } from '../../utils';
 
 const ChooseDoctor =({navigation})=>{
@@ -9,7 +9,7 @@ const ChooseDoctor =({navigation})=>{
      <View style={styles.page}>
          <Header type="dark" onPress={()=>navigation.goBack()} title="Pilih Dokter"/>
         
-        <ListDoctor 
+        <List 
          type="next"
          onPress={()=>navigation.navigate("Chat")}
          picture={DummyDokter2}

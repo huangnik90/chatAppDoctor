@@ -12,7 +12,9 @@ import {
     Doctor,
     Hospital,
     Messages, 
-    Chat} from '../pages';
+    Chat,
+    UserProfile,
+    EditProfile} from '../pages';
 import { BottomNavigator } from '../components/molecules';
 
 const Stack = createStackNavigator();
@@ -51,6 +53,14 @@ const Router = ()=>{
             <Stack.Screen 
             name="Chat" 
             component={Chat} 
+            options={{headerShown:false}}/>
+            <Stack.Screen 
+            name="UserProfile" 
+            component={UserProfile} 
+            options={{headerShown:false}}/>
+            <Stack.Screen 
+            name="EditProfile" 
+            component={EditProfile} 
             options={{headerShown:false}}/>
         </Stack.Navigator>
     )

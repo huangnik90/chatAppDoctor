@@ -31,7 +31,8 @@ const styles = StyleSheet.create({
     },
     container:{
         flexDirection:'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        marginBottom:15
     },
     profile:{
         flex:1,

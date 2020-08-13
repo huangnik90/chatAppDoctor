@@ -1,12 +1,36 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { colors, fonts } from '../../../utils';
-import { IconNextArrow } from '../../../assets';
+import { IconNextArrow, IconHelp, IconEditProfile, IconLanguage } from '../../../assets';
 
-const ListDoctor =({picture,name,chat,type,onPress})=>{
+const List =({picture,name,chat,type,onPress,icon})=>{
+    const Icon = ()=>{
+        if(icon==='edit-profile'){
+            return(
+                <IconEditProfile/>
+            )
+        }
+        if(icon==='rate'){
+            return(
+                <IconHelp/>
+            )
+        }
+        if(icon==='help'){
+            return(
+                <IconHelp/>
+            )
+        }
+        if(icon==='language'){
+            return(
+                <IconLanguage/>
+            )
+        }
+        return null
+      
+    }
     return(
      <TouchableOpacity  onPress={onPress} style={styles.container}>
-         <Image style={styles.avatar} source={picture}/>
+         {icon ? <Icon/> :<Image style={styles.avatar} source={picture}/>}
             <View style={styles.content}>
                 <Text style={styles.name}>{name}</Text>
                 <Text style={styles.chat}>{chat}</Text>
@@ -29,12 +53,11 @@ const styles = StyleSheet.create({
         justifyContent:'space-between'
     },
     content:{
-        flex:1
+        flex:1,marginLeft:16
     },
     avatar:{
         width:46,
         height:46,
-        marginRight:12
     },
     name:{
         fontSize:16,
@@ -48,4 +71,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default ListDoctor;
+export default List;

@@ -12,10 +12,16 @@ import IconBackArrowLight from './BackArrowLight.svg'
 import IconNextArrow from './NextArrow.svg'
 import IconSend from './iconSend.svg'
 import IconSendActive from './iconSendActive.svg'
+import IconEditProfile from './ic-editprofile.svg'
+import IconHelp from './ic-help.svg'
+import IconLanguage from './ic-language.svg'
+import IconRate from './ic-rate.svg'
+
 
 
 
 export {
+    IconEditProfile,IconRate,IconHelp,IconLanguage,
     IconBackArrow,IconBackArrowLight,
     IconNextArrow,
     IconAddPhoto,
