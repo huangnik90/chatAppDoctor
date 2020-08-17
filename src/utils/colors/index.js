@@ -7,7 +7,11 @@ const mainColors ={
     grey1:'#7d8797',
     grey2:'#E9E9E9',
     grey3:'#edeef0',
-    blue1:'#0066cb'
+    grey4:'#b1b7c2',
+    blue1:'#0066cb',
+    black1:'#000000',
+    black2:'rgba(0,0,0,0.5)',
+    red1:'#E06379'
 }
 
 export const colors ={
@@ -22,7 +26,8 @@ export const colors ={
         secondary:mainColors.grey1,
         active:mainColors.green1,
         inactive:mainColors.dark2,
-        subTitle:mainColors.dark3
+        subTitle:mainColors.dark3,
+        disable:mainColors.grey4
     },
     button:{
         primary:{
@@ -32,8 +37,12 @@ export const colors ={
         secondary:{
             background:'white',
             text:mainColors.dark1
-        }
+        },
+        disable:mainColors.grey3
+        
     },
     border: mainColors.grey2,
-    cardLight:mainColors.green2
+    cardLight:mainColors.green2,
+    loadingBackground : mainColors.black2,
+    error:mainColors.red1
 }

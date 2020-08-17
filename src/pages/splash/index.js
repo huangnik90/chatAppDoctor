@@ -7,7 +7,7 @@ const SplashScreen =(props)=>{
   useEffect(()=>{
     setTimeout(()=>{
       props.navigation.navigate('GetStarted')
-    },3000)
+    },1000)
   },[props.navigation])
 
     return(

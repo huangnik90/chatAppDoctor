@@ -10,6 +10,8 @@ import ChatItem from './ChatItem'
 import InputChat from './InputChat'
 import Profile from './Profile'
 import ProfileItem from './ProfileItem'
+import Loading from './Loading'
+
 
 
 
@@ -20,5 +22,5 @@ export {
     List,
     ListHospital,
     InputChat,ChatItem,
-    Profile, ProfileItem
+    Profile, ProfileItem,Loading
 }

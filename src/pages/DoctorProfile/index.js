@@ -16,7 +16,7 @@ const DoctorProfile =({navigation})=>{
             <ProfileItem label="Tempat Praktik" value="Rumah Sakit Umum Indonesia"/>
             <ProfileItem label="No. STR" value="00000011230002330"/>
             <View style={styles.action}>
-                  <Button title="Start Consultation"/>
+                  <Button title="Start Consultation" onPress={()=>navigation.navigate('Chat')}/>
             </View>
         </View>
     )
