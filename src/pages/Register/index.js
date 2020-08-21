@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
-import { Button, Input, Gap } from '../../components/atoms';
-import { Header,Loading } from '../../components';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import { showMessage } from "react-native-flash-message";
+import { Header, Loading } from '../../components';
+import { Button, Gap, Input } from '../../components/atoms';
+import { Firebase } from '../../config';
 import { colors, useForm } from '../../utils';
-import {Firebase} from '../../config'
-import { showMessage, hideMessage } from "react-native-flash-message";
+
 //jangan lupa masukin react native flash message di Root app.js
 const Register =(props)=>{
     // const [fullname,setFullname] = useState('')
@@ -21,25 +22,28 @@ const Register =(props)=>{
 
     const onPressContinue =()=>{
         setLoading(true)
+       
         Firebase.auth().createUserWithEmailAndPassword(form.email,form.password)
         .then((res)=>{
-            //register data to database
-            Firebase.database()
-            .ref(`users/${res.user.uid}/`)
-            .set({
+            const data ={
                 fullName:form.fullName,
                 occupation:form.occupation,
                 email:form.email,
-            })
-
+                uid:res.user.uid
+            }
+            Firebase.database()
+            .ref(`users/${res.user.uid}/`)
+            .set(data)
+            
             showMessage({
                 message: 'Register Success',
                 type: "success",
               });
             setLoading(false)
             setForm('reset')
-           
 
+            //kirim parameter ke page Upload foto
+            props.navigation.navigate("UploadPhoto", data)
         })
         .catch( (error) =>{
             showMessage({
@@ -51,7 +55,6 @@ const Register =(props)=>{
             setLoading(false)
             setForm('reset')
         })
-        // props.navigation.navigate("UploadPhoto")
     }
     return(
     <>

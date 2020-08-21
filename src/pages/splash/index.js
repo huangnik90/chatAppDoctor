@@ -2,18 +2,26 @@ import React, { useEffect } from 'react'
 import {View,Text, StyleSheet} from 'react-native'
 import { ILLogo } from '../../assets';
 import { colors } from '../../utils';
+import { Firebase } from '../../config';
 
 const SplashScreen =(props)=>{
   useEffect(()=>{
     setTimeout(()=>{
-      props.navigation.navigate('GetStarted')
+      Firebase.auth().onAuthStateChanged((user)=>{
+        if(user){
+          //kalo lagi login (user data ada)
+          props.navigation.navigate('MainApp')
+        }else{
+          props.navigation.navigate('GetStarted')
+        }
+      })
     },1000)
   },[props.navigation])
 
     return(
         <View style={style.mainWrapper}>
           <ILLogo/>
-          <Text style={style.fontTitle}>Kuw Dokter</Text>
+          <Text style={style.fontTitle}>Niko Chat Dokter?</Text>
         </View>
     )
 }

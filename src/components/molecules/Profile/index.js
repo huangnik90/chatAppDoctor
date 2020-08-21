@@ -1,23 +1,31 @@
 import React from 'react';
-import { StyleSheet, View,Text, Image } from 'react-native';
-import {  DummyUser, IconCancelPhoto } from '../../../assets';
+import { Image, StyleSheet, Text, View } from 'react-native';
+import { IconCancelPhoto } from '../../../assets';
 import { colors, fonts } from '../../../utils';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const Profile =({name,desc,navigation})=>{
+const Profile =({name,desc,photo,editable,onPress})=>{
     return(
        <View style={styles.container}>
-           <View style={styles.borderProfile}>
-               <Image source={DummyUser} style={styles.avatar}/>
-              {name?null:<Image style={styles.cancelIcon} source={IconCancelPhoto}/>} 
-           </View>
+           {editable?
+            <TouchableOpacity onPress={onPress} style={styles.borderProfile}>
+            <Image source={photo} style={styles.avatar}/>
+            {name?null:<Image style={styles.cancelIcon} source={IconCancelPhoto}/>} 
+            </TouchableOpacity>
+            :
+            <View style={styles.borderProfile}>
+            <Image source={photo} style={styles.avatar}/>
+            {name?null:<Image style={styles.cancelIcon} source={IconCancelPhoto}/>} 
+            </View>
+           
+           }
+           
            {name &&
             <View style={styles.content}>
                 <Text style={styles.name}>{name}</Text>
                 <Text style={styles.profession}>{desc}</Text>
             </View>
            }
-               
-
        </View>
     )
 }
@@ -36,7 +44,8 @@ const styles = StyleSheet.create({
     },
     avatar:{
         width:110,
-        height:110
+        height:110,
+        borderRadius:110/2
     },borderProfile:{
         justifyContent:'center',
         borderWidth: 1,
