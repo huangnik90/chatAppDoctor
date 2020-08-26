@@ -1,52 +1,45 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View,ScrollView } from 'react-native';
+import React from 'react';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useDispatch } from 'react-redux';
 import { ILLogo } from '../../assets';
-import { Input, Link, Button, Gap } from '../../components/atoms';
-import { colors, fonts, useForm, storeData } from '../../utils';
+import { Button, Gap, Input, Link } from '../../components/atoms';
 import { Firebase } from '../../config';
-import { showMessage } from "react-native-flash-message";
-import { Loading } from '../../components';
+import { colors, fonts, showError, showWarning, storeData, useForm } from '../../utils';
 
 const Login =({navigation})=>{
     const [form,setForm] = useForm({email:'',password:''})
-    const [loading,setLoading] =useState(false)
-
+    const dispatch = useDispatch()
 
     const signInBtn =()=>{
-      setLoading(true)
-      Firebase.auth().signInWithEmailAndPassword(form.email,form.password)
+      // setLoading(true)
+      dispatch({type:"SET_LOADING",value:true})
+
+      Firebase
+      .auth()
+      .signInWithEmailAndPassword(form.email,form.password)
       .then((res)=>{
-        setLoading(false)
+        dispatch({type:"SET_LOADING",value:false})
         Firebase.database().ref(`users/${res.user.uid}/`).once('value').then((resDB)=>{
           if(resDB){
             storeData('user',resDB.val())
             navigation.replace('MainApp')
           }
           else{
-            setLoading(false)
-            showMessage({
-              message:'Sign in gagal coba periksa koneksi dan coba lagi',
-              type: "warning",
-            });
+            dispatch({type:"SET_LOADING",value:false})
+            showWarning('Terjadi Kesalahan, periksa koneksi dan coba lagi')
           }
         })
       })
       .catch((err)=>
         {
-          setLoading(false)
-          showMessage({
-            message: err.code+': Check your email and password',
-            type: "default",
-            backgroundColor:colors.error,
-            color:colors.white
-          });
+          dispatch({type:"SET_LOADING",value:false})
+          showError(err.message)
         }
       );
       // 
     }
 
     return(
-    <>
      <View style={styles.page}>
        <ScrollView showsVerticalScrollIndicator={false}>
        <Gap height={40} />
@@ -69,11 +62,9 @@ const Login =({navigation})=>{
          onPress={signInBtn}
          />
          <Gap height={30} />
-         <Link onPress={()=>navigation.navigate('Register')} size={20} align="center" title="Create New Account"/>
+         <Link onPress={()=>navigation.navigate('Register')} size={12} align="center" title="Create New Account"/>
        </ScrollView>
      </View>
-     {loading && <Loading/>}
-     </>
     )
 }
 

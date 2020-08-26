@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { showMessage } from "react-native-flash-message";
 import { Header, Loading } from '../../components';
 import { Button, Gap, Input } from '../../components/atoms';
 import { Firebase } from '../../config';
-import { colors, useForm } from '../../utils';
+import { colors, showError, showSuccess, useForm } from '../../utils';
 
 //jangan lupa masukin react native flash message di Root app.js
 const Register =(props)=>{
@@ -35,10 +34,7 @@ const Register =(props)=>{
             .ref(`users/${res.user.uid}/`)
             .set(data)
             
-            showMessage({
-                message: 'Register Success',
-                type: "success",
-              });
+            showSuccess("Register Sukses")
             setLoading(false)
             setForm('reset')
 
@@ -46,12 +42,7 @@ const Register =(props)=>{
             props.navigation.navigate("UploadPhoto", data)
         })
         .catch( (error) =>{
-            showMessage({
-                message: error.message,
-                // type: "danger",
-                backgroundColor:colors.error,
-                color:colors.white
-              });
+            showError(error.message)
             setLoading(false)
             setForm('reset')
         })

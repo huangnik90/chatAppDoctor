@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
+import { showMessage } from "react-native-flash-message";
 import { ScrollView } from 'react-native-gesture-handler';
+import ImagePicker from 'react-native-image-picker';
+import { ILNullPhoto } from '../../assets';
+import { Firebase } from '../../config';
 import { colors, getData, storeData } from '../../utils';
 import { Button, Gap, Header, Input, Profile } from './../../components';
-import { showMessage } from "react-native-flash-message";
-import { Firebase } from '../../config';
-import ImagePicker from 'react-native-image-picker';
-import { ILNullPhoto, IconAddPhoto, IconCancelPhoto } from '../../assets'
 
 
 const EditProfile =({navigation})=>{
@@ -15,13 +15,12 @@ const EditProfile =({navigation})=>{
         email:'',
         occupation:''
     })
-
     const [photoAvatar,setPhotoAvatar] = useState(ILNullPhoto)
     const [photoForDB,setPhotoForDB] = useState('')
-
+    const [password,setPassword] = useState('')
+    
     useEffect(()=>{
         getData('user').then((res)=>{
-            console.log(res)
             const data = res;
             setPhotoAvatar({uri:res.photo})
             setForm(data)
@@ -34,7 +33,37 @@ const EditProfile =({navigation})=>{
             [key]:value
         })
     }
+
     const updateProfile =()=>{
+        if(password.length > 0){
+            if(password.length<8){
+                showMessage({
+                    message:'password at least 8 karakter',
+                    type:'warning'
+                })
+            }else{
+                updateProfileOnly()
+                updatePassword()
+            }
+        }else{
+          updateProfileOnly()
+        }
+    }
+
+    const updatePassword=()=>{
+        Firebase.auth().onAuthStateChanged((user)=>{
+            if(user){
+                user.updatePassword(password).catch((err)=>{
+                    showMessage({
+                        message:err.message,
+                        type:'danger'
+                    })
+                })
+            }
+        })
+    }
+
+    const updateProfileOnly =()=>{
         const data = form;
         form.photo = photoForDB
 
@@ -91,7 +120,7 @@ const EditProfile =({navigation})=>{
                 disable
                 title="Email"/>
                 <Gap height={24}/>
-                <Input title="Password"/>
+                <Input title="Password" value={password} secureTextEntry={true} onChangeText={(value)=>setPassword(value)}/>
                 <Gap height={40}/>
                 <Button title="Save Profile" onPress={updateProfile}/>
            </ScrollView>
