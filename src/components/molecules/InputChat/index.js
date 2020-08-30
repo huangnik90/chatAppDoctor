@@ -4,11 +4,16 @@ import { colors } from '../../../utils/colors'
 import { Button } from '../../atoms'
 import { fonts } from '../../../utils'
 
-const InputChat =({onPress})=>{
+const InputChat =({onPress,value,onChangeText})=>{
     return(
         <View style={styles.container}>
-           <TextInput style={styles.input} placeholder='Tuliskan pesan..' />
-           <Button onPress={onPress} type="btn-icon-send" />
+           <TextInput style={styles.input} placeholder='Tuliskan pesan..' 
+           onChangeText={onChangeText}
+           value={value}
+           />
+           <Button onPress={onPress} 
+           disable={value.length < 1} 
+           type="btn-icon-send" />
         </View>
     )
 }

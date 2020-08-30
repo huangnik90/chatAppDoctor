@@ -1,18 +1,17 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image} from 'react-native'
+import { Image, StyleSheet, Text, View } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 import { colors, fonts } from '../../../utils'
-import { DummyNews } from '../../../assets'
 
-const NewsItem =({title,onPress})=>{
+const NewsItem =({title,onPress,date,image})=>{
     return(
-        <View style={styles.container}>
+        <TouchableOpacity onPress={onPress} style={styles.container}>
             <View style={styles.titleWrapper}>
-                <Text style={styles.title}>NewsItem Molecules</Text>
-                <Text style={styles.date}>Date</Text>
+                <Text style={styles.title}>{title}</Text>
+                <Text style={styles.date}>{date}</Text>
             </View>
-       
-           <Image source={DummyNews} style={styles.avatar}/>
-        </View>
+           <Image source={{uri:image}} style={styles.avatar}/>
+        </TouchableOpacity>
     )
 }
 
@@ -25,7 +24,8 @@ const styles = StyleSheet.create({
         fontFamily:fonts.primary[600],
         fontSize:16,
         color: colors.text.primary,
-        marginBottom:4,maxWidth:'90%'
+        marginBottom:4,maxWidth:'90%',
+        textTransform:'capitalize'
     },
     date:{
         fontSize:12,

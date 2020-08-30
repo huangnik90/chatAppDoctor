@@ -5,9 +5,9 @@ import { colors } from '../../utils';
 import { Firebase } from '../../config';
 
 const SplashScreen =(props)=>{
+  //ini di pake biar useEffect cuma terpanggil di splash screen saja.. 
   useEffect(()=>{
-    setTimeout(()=>{
-      Firebase.auth().onAuthStateChanged((user)=>{
+   const unsubscribe = Firebase.auth().onAuthStateChanged((user)=>{
         if(user){
           //kalo lagi login (user data ada)
           props.navigation.navigate('MainApp')
@@ -15,13 +15,14 @@ const SplashScreen =(props)=>{
           props.navigation.navigate('GetStarted')
         }
       })
-    },1000)
+
+    return ()=> unsubscribe()
   },[props.navigation])
 
     return(
         <View style={style.mainWrapper}>
           <ILLogo/>
-          <Text style={style.fontTitle}>Niko Chat Dokter?</Text>
+          <Text style={style.fontTitle}>Looking for Doctor?</Text>
         </View>
     )
 }

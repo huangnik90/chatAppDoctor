@@ -4,10 +4,14 @@ import { Gap, Button } from '../../atoms'
 import { colors, fonts } from '../../../utils'
 import DarkProfile from './DarkProfile'
 
-const Header =({title,onPress,type})=>{
+const Header =({title,onPress,type,desc,photo})=>{
   if(type==='dark-profile'){
       return(
-          <DarkProfile onPress={onPress} title="Nairotbi Putri" desc="Dokter Anak"/>
+          <DarkProfile onPress={onPress} 
+          title={title} 
+          desc={desc}
+          photo={photo}
+          />
       )
   }
     return(
@@ -37,7 +41,7 @@ const styles = StyleSheet.create({
         textAlign:'center',
         fontFamily: fonts.primary[600],
         fontSize:20,
-        color:type==='dark'?colors.white:colors.text.primary
+        color:type==='dark'?colors.white:colors.text.primary,
   })
 })
 export default Header;

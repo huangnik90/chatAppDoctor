@@ -3,7 +3,7 @@ import { Image, StyleSheet, Text, View,TouchableOpacity } from 'react-native'
 import { ILNullPhoto } from '../../../assets'
 import { colors, fonts, getData } from '../../../utils'
 
-const HomeProfile =({title,onPress})=>{
+const HomeProfile =({onPress})=>{
     const [profile,setProfile] = useState({
         photo:ILNullPhoto,
         fullName:'',

@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import { Header, Loading } from '../../components';
 import { Button, Gap, Input } from '../../components/atoms';
 import { Firebase } from '../../config';
-import { colors, showError, showSuccess, useForm } from '../../utils';
+import { colors, showError, showSuccess, useForm, storeData } from '../../utils';
 
 //jangan lupa masukin react native flash message di Root app.js
 const Register =(props)=>{
@@ -33,7 +33,7 @@ const Register =(props)=>{
             Firebase.database()
             .ref(`users/${res.user.uid}/`)
             .set(data)
-            
+            storeData('user',data)
             showSuccess("Register Sukses")
             setLoading(false)
             setForm('reset')

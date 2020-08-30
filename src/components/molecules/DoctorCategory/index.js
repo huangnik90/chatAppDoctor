@@ -1,17 +1,16 @@
 import React from 'react'
 import { Image, StyleSheet, Text, TouchableOpacity } from 'react-native'
-import { DummyIconDokter } from '../../../assets'
 import { colors, fonts } from '../../../utils'
 
-const DoctorCategory =({title,onPress})=>{
+const DoctorCategory =({category,image,onPress})=>{
     return(
         <TouchableOpacity onPress={onPress} style={styles.container}>
             <Image
-                source={DummyIconDokter}
+                source={{uri:image}}
                 style={styles.imageDoctor}
             />
-           <Text style={styles.label}>Saya butuh</Text>
-           <Text style={styles.category}>dokter umum</Text>
+            <Text style={styles.label}>Saya butuh</Text>
+            <Text style={styles.category}>{category}</Text>
         </TouchableOpacity>
     )
 }
@@ -38,7 +37,8 @@ const styles = StyleSheet.create({
     category:{
         fontFamily:fonts.primary[600],
         fontSize:12,
-        color:colors.text.primary
+        color:colors.text.primary,
+        textTransform:'capitalize'
     }
  
 })

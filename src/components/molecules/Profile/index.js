@@ -60,13 +60,16 @@ const styles = StyleSheet.create({
         fontFamily:fonts.primary[600],
         fontSize:20,
         color:colors.text.primary,
-        marginTop:16
+        marginTop:16,
+        textTransform:'capitalize'
+
     },
     profession:{
         fontFamily:fonts.primary[600],
         fontSize:16,
         color:colors.text.secondary,
-        marginTop:2
+        marginTop:2,
+        textTransform:'capitalize'
     },
     content:{
         alignItems:'center'

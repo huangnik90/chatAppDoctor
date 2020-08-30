@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, ImageBackground } from 'react-native';
-import { colors, fonts } from '../../utils';
+import { colors, fonts, showError } from '../../utils';
 import { ILHospital } from '../../assets';
 import { ListHospital } from '../../components';
+import { Firebase } from '../../config';
 
 const Hospital =()=>{
+  
+  const [listHospital,setListHospital] = useState([])
+  useEffect(()=>{
+    Firebase.database().ref('hospitals/').once('value').then((res)=>{
+      if(res.val()){
+        const dataFilter = res.val().filter(el => el !==null)
+        setListHospital(dataFilter)
+      }
+    }).catch((err)=>{
+      showError(err.message)
+    })
+  },[])
     return(
      <View style={styles.page}>
        
@@ -13,24 +26,17 @@ const Hospital =()=>{
          <Text style={styles.desc}>3 Tersedia</Text>
        </ImageBackground>
        <View style={styles.content}>
-         <ListHospital 
-         type="Rumah Sakit" 
-         address="Jalan Pahlawan"
-         name="Indiko Hospital 12"
-         picture={ILHospital}
-         />
-         <ListHospital 
-         type="Rumah Sakit Jiwa" 
-         address="Jalan Soekarno Hatta"
-         name="Indiko Hospital 88"
-         picture={ILHospital}
-         />
-         <ListHospital 
-         type="Rumah Sakit Anak" 
-         address="Jalan Panglima Batur"
-         name="Indiko Hospital 66"
-         picture={ILHospital}
-         />
+         {listHospital.map((val)=>{
+           return(
+              <ListHospital 
+              key={val.id}
+              type={val.type}
+              address={val.address}
+              name={val.name}
+              picture={val.image}
+              />
+           )
+         })}
        </View>
      </View>
     )

@@ -4,7 +4,7 @@ import { Gap, Button } from '../../atoms'
 import { colors, fonts } from '../../../utils'
 import { DummyDokter3 } from '../../../assets'
 
-const DarkProfile =({title,desc,onPress,type})=>{
+const DarkProfile =({title,desc,onPress,photo})=>{
  
     return(
         <View style={styles.container}>
@@ -18,7 +18,7 @@ const DarkProfile =({title,desc,onPress,type})=>{
                 <Text style={styles.desc}>{desc}</Text>
             </View>
          
-            <Image source={DummyDokter3} style={styles.avatar}/>
+            <Image source={photo} style={styles.avatar}/>
             <Gap width={24}></Gap>
         </View>
     )
@@ -43,13 +43,17 @@ const styles = StyleSheet.create({
         fontFamily: fonts.primary[600],
         fontSize:20,
         color: colors.white,
-        textAlign:'center'
+        textAlign:'center',
+        textTransform:'capitalize'
+
   },
   desc:{
     fontFamily: fonts.primary.normal,
     fontSize:14,
     color: colors.text.subTitle,
-    textAlign:'center'
+    textAlign:'center',
+    textTransform:'capitalize'
+
   },
   avatar:{
       width:46,

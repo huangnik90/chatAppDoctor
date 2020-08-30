@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { IconStar } from '../../../assets'
 import { colors, fonts } from '../../../utils'
 
-const RatedDoctor =({name,desc,avatar, onPress})=>{
+const RatedDoctor =({name,desc,avatar, rate,onPress})=>{
+    const arr =[]
+    for (let i=0;i<rate;i++){
+        arr.push(i)
+    }
     return(
         <TouchableOpacity onPress={onPress} style={styles.container}>
             <Image style={styles.avatar} source={avatar}/>
@@ -12,11 +16,16 @@ const RatedDoctor =({name,desc,avatar, onPress})=>{
             <Text style={styles.profession}>{desc}</Text>
             </View>
             <View style={styles.rate}>
-                <IconStar/>
-                <IconStar/>
-                <IconStar/>
-                <IconStar/>
-                <IconStar/>
+            <Text>
+              {arr.map((val,index)=>{
+                  return(
+                      <IconStar
+                        key={index}
+                      />
+                  )
+              })}
+            </Text>  
+                
             </View>
         </TouchableOpacity>
     )
@@ -43,12 +52,14 @@ const styles = StyleSheet.create({
     label:{
         fontSize:16,
         fontFamily:fonts.primary[600],
-        color:colors.text.primary
+        color:colors.text.primary,
+        textTransform:'capitalize'
     },
     profession:{
         fontSize:12,
         fontFamily:fonts.primary.normal,
-        color:colors.text.secondary
+        color:colors.text.secondary,
+        textTransform:'capitalize'
     }
 })
 export default RatedDoctor;

@@ -1,19 +1,32 @@
 import React from 'react'
-import {View, Text, StyleSheet} from 'react-native'
+import {View, Text,ScrollView, StyleSheet} from 'react-native'
 import { Header,InputChat,ChatItem } from '../../components'
 import { fonts, colors } from '../../utils'
 
-const Chat = ({navigation})=>{
+const Chat = ({navigation,route})=>{
+    const dataDoctor = route.params;
     return(
         <View style={styles.page}>
-            <Header type="dark-profile" onPress={()=>navigation.goBack()}  title="Nairobi Putri Hayza"/>
+            <Header type="dark-profile" 
+            onPress={()=>navigation.goBack()}  
+            title={dataDoctor.data.fullName}
+            desc={dataDoctor.data.profession}
+            photo={{uri:dataDoctor.data.photo}}
+            />
             <View style={styles.content}> 
-                <Text style={styles.chatDate}>Senin, 21 Maret 2020</Text>
-                <ChatItem isMe/>
-                <ChatItem/>
+            <ScrollView showsVerticalScrollIndicator={false}>
+                    <Text style={styles.chatDate}>Senin, 21 Maret 2020</Text>
+                    <ChatItem isMe/>
+                    <ChatItem/>
+            </ScrollView>
+               
             </View>
 
-            <InputChat />
+            <InputChat 
+            onChangeText={()=>alert("text changed")}
+            value="z"
+            onPress={()=>alert('uch')}
+            />
          
         </View>
     )
